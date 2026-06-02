@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+class tree{
+	public:
+		int data;
+		tree* left;
+		tree* right;
+		tree(int val){
+		data=val;
+		left=right=NULL;
+	}
+};
+void pre_order(tree* root){
+	if(root==NULL)
+	return;
+	cout<<root->data<<"\t";
+	
+	pre_order(root->left);
+	pre_order(root->right);
+}
+void in_order(tree* root){
+	if(root==NULL)
+	return;
+	in_order(root->left);
+	cout<<root->data<<"\t";
+	in_order(root->right);
+}
+void post_order(tree* root){
+	if(root==NULL)
+	return;
+	post_order(root->left);
+	post_order(root->right);
+	cout<<root->data<<"\t";
+}
+int main(){
+	tree* root=new tree(10);
+	root->left=new tree(20);
+	root->right=new tree(30);
+  	
+          root->left->left=new tree(40);
+          root->left->right=new tree(50);
+          
+          root->right->left=new tree(60);
+          root->right->right=new tree(70);
+          
+          pre_order(root);
+          in_order(root);
+          post_order(root);
+return 0;
+}
